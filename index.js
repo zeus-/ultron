@@ -9,18 +9,18 @@ let mainWindow;
 app.on('ready', () => {
   console.log('I am Ultron!')
 
-  // Open main window
+  //// Open main window
   // mainWindow = new BrowserWindow({ frame: false });
 
-  // Load what?
+  //// Load what?
   // mainWindow.loadURL('http://www.wishpond.com/login');
   // mainWindow.loadURL(`file://${__dirname}/templates/main.html`);
 
-  // Make your own menu
+  //// Make your own menu
   // const mainMenu = Menu.buildFromTemplate(menuTemplate);
   // Menu.setApplicationMenu(mainMenu);
 
-  // Can you quit me?
+  //// Can you quit me?
 
   // createTrayApp()
 });
@@ -124,7 +124,7 @@ function createTrayApp() {
   });
   trayWindow.loadURL(`file://${__dirname}/templates/tray.html`);
   tray = new Tray(path.join(__dirname, `/icon.png`), trayWindow);
-  trayWindow.setBounds({ x: 1100, y: 0, width: 300, height: 200 });
+  trayWindow.setBounds({ x: 695, y: 0, width: 230, height: 120 });
   tray.on('click', () => {
     if (trayWindow.isVisible()) {
       trayWindow.hide();
