@@ -1,5 +1,5 @@
 const electron = require('electron');
-const path = require('path');
+
 const { app, BrowserWindow, Menu, ipcMain, Tray } = electron;
 
 let mainWindow;
@@ -10,19 +10,19 @@ app.on('ready', () => {
   console.log('I am Ultron!')
 
   // Open main window
-  mainWindow = new BrowserWindow({ frame: true });
+  // mainWindow = new BrowserWindow({ frame: false });
 
   // Load what?
   // mainWindow.loadURL('http://www.wishpond.com/login');
-  mainWindow.loadURL(`file://${__dirname}/templates/main.html`);
+  // mainWindow.loadURL(`file://${__dirname}/templates/main.html`);
 
   // Make your own menu
-  const mainMenu = Menu.buildFromTemplate(menuTemplate);
-  Menu.setApplicationMenu(mainMenu);
-
-  createTrayApp()
+  // const mainMenu = Menu.buildFromTemplate(menuTemplate);
+  // Menu.setApplicationMenu(mainMenu);
 
   // Can you quit me?
+
+  // createTrayApp()
 });
 
 
@@ -65,35 +65,35 @@ function openSmallWindow(template) {
 
 
 //// For Apple eyes only
-if (process.platform === 'darwin') {
-  menuTemplate.unshift({
-    submenu: [
-      {
-        label: 'About',
-        click() { openSmallWindow('about'); }
-      }
-    ]
-  })
-}
+// if (process.platform === 'darwin') {
+//   menuTemplate.unshift({
+//     submenu: [
+//       {
+//         label: 'About',
+//         click() { openSmallWindow('about'); }
+//       }
+//     ]
+//   })
+// }
 
 
 
 //// Devtools shouldn't be visible on production
-if (process.env.NODE_ENV !== 'production') {
-  menuTemplate.push({
-    label: 'View',
-    submenu: [
-      { role: 'reload' },
-      {
-        label: 'Toggle Developer Tools',
-        accelerator: process.platform === 'darwin' ? 'Command+Alt+J' : 'Ctrl+Shift+J',
-        click(item, focusedWindow) {
-          focusedWindow.toggleDevTools();
-        }
-      }
-    ]
-  });
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   menuTemplate.push({
+//     label: 'View',
+//     submenu: [
+//       { role: 'reload' },
+//       {
+//         label: 'Toggle Developer Tools',
+//         accelerator: process.platform === 'darwin' ? 'Command+Alt+J' : 'Ctrl+Shift+J',
+//         click(item, focusedWindow) {
+//           focusedWindow.toggleDevTools();
+//         }
+//       }
+//     ]
+//   });
+// }
 
 
 
@@ -112,6 +112,9 @@ ipcMain.on('command:execute', (event, command) => {
   mainWindow.webContents.send('command:executed', output);
 });
 
+
+
+const path = require('path');
 
 function createTrayApp() {
   let trayWindow = new BrowserWindow({
