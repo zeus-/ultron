@@ -1,0 +1,35 @@
+<head>
+  <style>
+  body {
+    background: black;
+    color: red;
+    font-family: 'Menlo';
+    font-size: 18px;
+  }
+  button {
+    background: black;
+    color: white;
+    font-size: 18px;
+  }
+
+  .download { font-size: 18px; color: #FCF3CF;}
+  </style>
+</head>
+
+<span class="download">Download complete</span>
+<button onclick="typeWriter()">Click Here</button>
+<p id="virus"></p>
+
+<script> 
+var i = 0;
+var txt = "ultron upload complete `sudo rm -rf` command executing ";
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("virus").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
